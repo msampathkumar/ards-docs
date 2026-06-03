@@ -8,10 +8,7 @@ The number of augments is about to grow quickly. Some are public, some come from
 
 Today the answer is mostly manual. A user, developer, or IT admin has to find the augment, judge whether it is useful and trustworthy, connect it to the client, and keep that wiring current. This works when there are a handful of well-known tools. It breaks down once every product, team, vendor, and organization is publishing augments of its own. The bottleneck is no longer invocation — it is **discovery**. A client cannot use a capability it does not know exists, a user cannot ask for an augment they have never heard of, and no enterprise can expect every employee to track which internal tools, approved vendor services, and private workflows apply to each task.
 
-This is the problem the **Augment Discovery Protocol (ADP)** solves. ADP lets a client ask one question: *what augment can help with this task?* The answer is not the result of running anything — it is a set of matching capabilities, describing what each does, who provides it, where it lives, and how to reach it. The client then invokes the augment it picks through that augment's own protocol, whether that is MCP, an API, an agent protocol, or a workflow system.
-
-!!! note "Find, don't invoke"
-    ADP finds; the augment invokes. Discovery returns which augment fits and where to reach it. Invocation happens over that augment's own protocol.
+This is the problem the **Augment Discovery Protocol (ADP)** solves. ADP lets a client ask one question: *what augment can help with this task?* The answer is not the result of running anything — it is a set of matching capabilities, describing what each does, who provides it, where it lives, and how to reach it. ADP only finds; the client then invokes the augment it picks over that augment's own protocol, whether that is MCP, an API, an agent protocol, or a workflow system.
 
 ADP is a protocol, not a product. This site specifies it. Any number of discovery services can be built on top of it — **Agent Finder** is one such service — but ADP itself is the thing that lets a published augment be found by many clients, and a client reach augments far beyond its own pre-connected set.
 
@@ -55,8 +52,7 @@ Neither manual integration nor asking every employee to browse a catalog solves 
 
 Discovery services need not be isolated. A company may want one view that includes its private augments, selected vendor augments, and selected public ones; a public service may index many publishers; a specialized service may index a single ecosystem. ADP lets these services **compose** — an enterprise can combine private and public sources into one answer set while still controlling what its users see. An IT manager can define their service as "everything GitHub's discovery service serves, plus our internal augments" — a union of a public endpoint and a private one, queried as a single view.
 
-!!! tip "The DNS property"
-    This is a property DNS has and web search does not. DNS resolvers compose: they forward to upstream servers and merge the global namespace with local zones, so every organization runs its own resolver without leaving the shared system. Web search has no equivalent — you query one engine's index, with no standard way to say "these results plus my company's, merged." ADP inherits the DNS property, so an enterprise extends the public ecosystem rather than walling itself off from it.
+This is a property DNS has and web search does not. DNS resolvers compose: they forward to upstream servers and merge the global namespace with local zones, so every organization runs its own resolver without leaving the shared system. Web search has no equivalent — you query one engine's index, with no standard way to say "these results plus my company's, merged." ADP inherits the same property, so an enterprise extends the public ecosystem rather than walling itself off from it.
 
 ---
 

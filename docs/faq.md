@@ -2,7 +2,7 @@
 
 ## Is ADP a replacement for MCP or OpenAPI?
 
-**No.** ADP is a **discovery protocol (an envelope)**, not an execution protocol. It wraps existing execution standards (like MCP, A2A, and OpenAPI) using standard and proposed IANA media types so clients can find augments dynamically. Once discovered, the client connects to the augment using its native protocol (e.g., JSON-RPC for MCP). ADP finds; the augment invokes.
+**No.** ADP is a **discovery protocol (an envelope)**, not an execution protocol. It wraps existing execution standards (like MCP, A2A, and OpenAPI) using standard and proposed IANA media types so clients can find augments dynamically. Once discovered, the client connects to and invokes the augment using its native protocol (e.g., JSON-RPC for MCP).
 
 ---
 
