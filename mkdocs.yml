@@ -2,8 +2,8 @@
 site_name: Augment Discovery Protocol
 site_url: https://augmentdiscoveryprotocol.io/
 site_description: A protocol for discovering augments — tools, Skills, MCP servers, APIs, workflows, and agents — for AI clients
-repo_name: agentfinder-protocol/docs
-repo_url: https://github.com/agentfinder-protocol/docs
+repo_name: agentfinder-project/adp-docs
+repo_url: https://github.com/agentfinder-project/adp-docs
 
 # Configuration
 theme:

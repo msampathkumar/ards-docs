@@ -74,4 +74,4 @@ ADP answers one question: *how does an AI client find the right external capabil
 
 The shift is from manual wiring to discovery. Instead of asking "what has this client already been connected to?", the client asks "what augment can help with this task?" That is the layer ADP creates — and an augment no one can find is an augment no one can use.
 
-[View the protocol on GitHub :material-github:](https://github.com/agentfinder-protocol){ .md-button .md-button--primary }
+[View the protocol on GitHub :material-github:](https://github.com/agentfinder-project/adp-docs){ .md-button .md-button--primary }
