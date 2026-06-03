@@ -1,7 +1,5 @@
 # Augment Discovery Protocol
 
-> An augment no one can find is an augment no one can use.
-
 AI clients are no longer limited to what the model knows. They can use external capabilities — tools, Skills, MCP servers, APIs, workflows, and other agents. We call these capabilities **augments**.
 
 The number of augments is about to grow quickly. Some will be public, some will come from vendors, some will be built inside companies; some will be narrow tools for a single task, and others will be agents or workflows that know how to get something done. That creates a simple problem: **how does an AI client know what is available?**
