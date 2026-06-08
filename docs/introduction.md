@@ -88,4 +88,4 @@ ARDP answers one question: *how does an AI client find the right external capabi
 
 The shift is from manual wiring to discovery. Instead of asking "what has this client already been connected to?", the client can ask "what agentic resource can help with this task?" That is the layer ARDP creates — and an agentic resource no one can find is an agentic resource no one can use.
 
-[View the protocol on GitHub :material-github:](https://github.com/ardp-project/adp-docs){ .md-button .md-button--primary }
+[View the protocol on GitHub :material-github:](https://github.com/ardp-project/docs){ .md-button .md-button--primary }
