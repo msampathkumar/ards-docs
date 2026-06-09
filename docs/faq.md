@@ -6,6 +6,20 @@
 
 ---
 
+## How is ARDS different from built-in tool search in AI clients?
+
+Built-in tool search helps a model choose among tools that have already been made available to that client. It is useful, but it operates inside a bounded tool universe controlled by the client.
+
+ARDS addresses the layer before that. It helps clients and organizations discover which capabilities should be available for a task in the first place. Those capabilities may come from internal systems, vendor services, public catalogs, Skills, MCP servers, APIs, workflows, agents, or other discovery sources.
+
+In some deployments, an ARDS discovery service may produce a policy-filtered toolbox that a client's built-in tool search can use. In others, the client may query the discovery service dynamically at task time. These are complementary patterns.
+
+The key difference is control. Built-in tool search is typically ranked and governed by the client implementation. ARDS allows ranking and filtering to incorporate enterprise and ecosystem signals: policy, permissions, provenance, trust, usage history, success rates, cost, latency, region, compliance requirements, and deprecation state.
+
+In short: built-in tool search helps select from known tools; ARDS helps find, govern, and rank the capabilities that should be considered.
+
+---
+
 ## How does discovery work without consuming context window tokens?
 
 Traditional tool selection requires stuffing every available schema into the system prompt. ARDS moves this calculation outside the LLM into a dedicated discovery service (`POST /search`). The orchestrator queries the service with natural language, and it returns only the top two or three most relevant schemas to inject into the prompt.
