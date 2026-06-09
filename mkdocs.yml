@@ -80,6 +80,7 @@ nav:
     - Introduction: introduction.md
     - Why ARDP?: why.md
     - Comparisons: comparisons.md
+    - Contributors: contributors.md
     - FAQ: faq.md
   - Guides:
     - How to publish: how_to_publish.md
