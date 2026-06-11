@@ -72,11 +72,11 @@ plugins:
   - redirects:
       redirect_maps:
         comparisons.md: interoperability.md
+        how_agents_search.md: how_to_build_a_client.md
 
 # Navigation
 nav:
   - Home: index.md
-  - Connect a chatbot: connect.md
   - About:
     - Introduction: introduction.md
     - Why ARDS?: why.md
@@ -85,7 +85,8 @@ nav:
     - FAQ: faq.md
   - Guides:
     - How to publish: how_to_publish.md
-    - How clients discover: how_agents_search.md
+    - Connect a chatbot: connect.md
+    - How to build a client: how_to_build_a_client.md
   - Specifications:
     - ARDS Specification: spec.md
     - AI Catalog Spec: ai_catalog_spec.md
