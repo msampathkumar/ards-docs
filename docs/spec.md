@@ -6,6 +6,13 @@
 **Status**: Proposal  
 **Date**: May 28, 2026
 
+**Authors**:
+
+- Junie Bu — Google
+- Scott Courtney — GoDaddy
+- R.V.Guha — Microsoft
+- Shaun Smith — Hugging Face
+
 ## 1\. Overview
 
 LLMs increasingly rely on external capabilities — MCP tools, A2A agents, skills, and other callable services — to extend their functionality. In this document, we refer to these generically as agentic resources.
@@ -657,3 +664,115 @@ A user asks an orchestrator: “Book me a flight to Tokyo and file the travel ex
 2. The Registry returns an internal expense agent, plus referrals to other Registries.  
 3. The orchestrator follows a referral to a public Agent Registry and queries it for flight booking agents.  
 4. The orchestrator now has both capabilities and can proceed to invoke them using their respective protocols (e.g., A2A for booking, MCP for expense filing).
+
+---
+
+## Appendix A: Filter Expression Syntax
+
+The filter parameter in the Search API uses a simple EBNF-like format for structured constraints.
+
+| Filter Field | Type | Description |
+| :---- | :---- | :---- |
+| displayName | String | Case-insensitive name filter. |
+| type | String | Comma-separated media types (OR logic). |
+| publisherId | String | Comma-separated publisher IDs (OR logic). |
+| createdAfter | String | ISO 8601 timestamp. |
+| updatedAfter | String | ISO 8601 timestamp. |
+
+Logical AND is used across different parameters; OR is used within a single parameter with multiple values (comma-separated).
+
+## Appendix B: Standard Error Codes
+
+| HTTP Code | Error Code | Description |
+| :---- | :---- | :---- |
+| 400 | INVALID\_ARGUMENT | Malformed query or invalid filter syntax. |
+| 401 | UNAUTHENTICATED | Invalid or missing credentials. |
+| 404 | NOT\_FOUND | Non-existent agent or registry. |
+| 429 | RATE\_LIMIT\_EXCEEDED | Too many requests. |
+| 500 | INTERNAL\_ERROR | Internal server failure. |
+
+## Appendix C: Agent Naming URN format {#appendix-c:-agent-naming-urn-format}
+
+Restricting the discovery identifier to this specific URN format, rather than allowing arbitrary URIs (such as https://... or spiffe://...), provides fundamental architectural benefits for federated agent discovery:
+
+1. **Nomenclature Stability (Immutable Noun vs. Mutable Location)**: Arbitrary URIs, particularly HTTP URLs, conflate the *logical identity* of a capability with its *physical network location*. If an enterprise migrates workloads across cloud providers, restructures its API gateway, or alters its deployment clusters, an HTTP URL breaks. The urn:ai: identifier acts as an abstract, permanent contract (the "noun"). Physical distribution and transport bindings are decoupled into the url or data fields, allowing underlying infrastructure to evolve without breaking client discovery, indexing, or orchestration code.  
+2. **Strict Separation of Concerns**: Federated search registries require a clean, stable primary key to index capabilities efficiently across global networks. Conversely, zero-trust execution runtimes require dynamic, verifiable cryptographic tokens (SPIFFE IDs, DIDs, X.509 certificates) to authenticate workloads. Forcing a single URI to serve both roles creates an architectural bottleneck. The urn:ai: format cleanly decouples the searchable discovery handle from the security principal, allowing the discovery index and the security mesh to operate independently.  
+3. **Decentralized Trust and Authority Binding**: In a globally federated open discovery network, search registries must prevent malicious actors from claiming namespaces they do not own (e.g., an untrusted publisher claiming urn:ai:google.com:tax-agent). Mandating that \<publisher\> be a valid FQDN establishes an immediate, verifiable authority anchor. Registries and orchestrators programmatically extract the domain from the URN (google.com) and cross-reference it with the cryptographic claim in trustManifest.identity. If the workload cannot produce a valid cryptographic attestation (e.g., mTLS certificate or SPIFFE SVID) issued by google.com, the capability is rejected. This ensures decentralized, zero-trust verification without requiring a centralized naming committee.  
+4. **Search and Discovery Ergonomics (The @ Resolution Pattern)**: Users and LLMs require intuitive, semantic handles for capabilities (e.g., Assistant@Acme). The structured hierarchy of urn:ai:\<publisher\>:\<namespace\>:\<agent-name\> allows search engines and federated registries to parse components deterministically. Registries can easily match natural language queries to the publisher domain (Acme) and the terminal short name (Assistant), enabling high-performance semantic filtering, aggregation, and conflict resolution (e.g., displaying Assistant with a verified Acme shield).  
+5. **Cross-Network Uniqueness and Federation Scalability**: Domain-anchored URNs guarantee global uniqueness across disparate federated registries without requiring centralized registration databases. Because domain names are already globally unique via the DNS root, anchoring the URN to a domain eliminates collision risks when merging catalogs from multiple upstream registries in auto or referrals federation modes.
+
+---
+
+## Appendix D: Formal Schema Definitions
+
+To support automated validation, testing, and machine-readable compliance checking, this specification defines formal schemas for both the catalog metadata manifests and the Registry REST API. 
+
+The schema specifications are provided across three distinct formats, serving different operational roles within the systems architecture:
+1. **CDDL (Appendix D.1)**: The authoritative, abstract structural syntax definition. It provides an extremely concise, human-readable algebraic grammar optimized for formal IETF standards-track drafts, supporting both JSON and CBOR binary encodings natively.
+2. **JSON Schema (Appendix D.2)**: The active web data validation schema, optimized for automated runtime client and server compliance checking in JSON-native development environments.
+3. **OpenAPI (Appendix D.3)**: The REST endpoint specification, defining HTTP parameters, paths, status codes, and error schemas for integration with standard web gateways and client code-generators.
+
+### D.1 The Authoritative CDDL Specification (RFC 8610)
+
+The core data structures for the `ai-catalog.json` manifest, `CatalogEntry` models, zero-trust `trustManifest` security envelope, and Search Registry API payloads are formally specified using **Concise Data Definition Language (CDDL - RFC 8610)**. 
+
+* **Authoritative Schema File**: [`spec/schemas/agentfinder.cddl`](https://github.com/agenticresourcediscovery/ard-spec/blob/main/spec/schemas/agentfinder.cddl)
+
+### D.2 The `ai-catalog.json` Manifest Schema (JSON Schema)
+
+The JSON representation of the capability manifest hosted at `/.well-known/ai-catalog.json` and individual catalog entries are formally defined using the **JSON Schema (Draft 2020-12)** standard. 
+
+* **Authoritative Schema File**: [`spec/schemas/ai-catalog.schema.json`](https://github.com/agenticresourcediscovery/ard-spec/blob/main/spec/schemas/ai-catalog.schema.json)
+* **Key Validation Enforcements**:
+  * Pattern matching URN compliance rules for the logical `identifier` format (`^urn:ai:...`).
+  * Strict Value-or-Reference exclusion logic (`oneOf` matching either `url` or `data`, preventing duplicate definitions).
+  * Struct checking for SPIFFE/DID compliance in `trustManifest` and `attestations` objects.
+
+To validate local catalog manifest JSON files on a system using AJV CLI:
+```bash
+npx ajv-cli validate -s spec/schemas/ai-catalog.schema.json -d path/to/ai-catalog.json
+```
+
+### D.3 The Registry REST API Specification (OpenAPI)
+
+The HTTP query interfaces (`POST /search` and `GET /agents`) exposed by compliant Agent Registries are formally defined using the **OpenAPI 3.1.0 Specification** in YAML.
+
+* **Authoritative Specification File**: [`spec/schemas/agentfinder.openapi.yaml`](https://github.com/agenticresourcediscovery/ard-spec/blob/main/spec/schemas/agentfinder.openapi.yaml)
+* **Key Integration Benefits**:
+  * Integrates paths, queries, status responses, and paging logic directly.
+  * References the JSON Schema `ai-catalog.schema.json` schema files to ensure search and list return types are statically bound to the specification's schema constraints.
+  * Allows automated router middleware enforcement and client/server stub generation (using tools like OpenAPI Generator).
+
+### D.4 Official Conformance Testing Tool
+
+To simplify development and guarantee complete compliance, this repository provides an official, zero-dependency **Conformance Testing CLI Tool** written in Python. It allows publishers to test their manifests and registry developers to validate their REST API servers.
+
+* **Testing Tool Executable**: [`conformance/bin/conformance-test`](https://github.com/agenticresourcediscovery/ard-spec/blob/main/conformance/bin/conformance-test)
+
+#### Features:
+* **Manifest validation mode**: Parses JSON manifests, runs strict JSON Schema checks (using the Python `jsonschema` library if installed), and executes custom semantic checks (e.g., URN formatting rules, Value-or-Reference enforcement, `representativeQueries` sizing).
+* **Registry validation mode**: Probes live endpoints (`POST /search` and `GET /agents`), sends spec-compliant search requests, and validates status codes, pagination envelopes, search result scores, and catalog entry structures.
+
+#### Usage Examples:
+
+Validate a local or remote `ai-catalog.json` manifest:
+```bash
+# Validate a local catalog file
+./conformance/bin/conformance-test manifest path/to/ai-catalog.json
+
+# Validate a remote well-known catalog manifest
+./conformance/bin/conformance-test manifest https://example.com/.well-known/ai-catalog.json
+```
+
+Validate a running Agent Registry REST API:
+```bash
+./conformance/bin/conformance-test registry http://localhost:9010/api
+```
+
+#### One-Click Conformance Demo
+
+To instantly run a complete end-to-end verification suite utilizing a pre-bundled spec-compliant catalog manifest and a lightweight running mock Registry REST API server, run the automated demo script:
+```bash
+./conformance/bin/run-conformance-demo
+```
+This script performs manifest schema validation, launches a mock registry server in the background, executes live search and listing queries against it using the conformance tester, and gracefully terminates the server when finished.
