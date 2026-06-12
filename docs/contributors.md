@@ -5,7 +5,7 @@ ARD is being designed, reviewed, and supported by agent builders at:
 - Cisco
 - GoDaddy
 - Google
-- HuggingFace
+- Hugging Face
 - Microsoft
 - Nvidia
 - Snowflake

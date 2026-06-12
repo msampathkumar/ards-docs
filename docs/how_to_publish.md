@@ -1,4 +1,4 @@
-# How to Publish
+# How to publish
 
 Exposing your agentic resources (MCP servers, Skills, ACP agents, APIs) to ARD discovery services is a simple three-step procedure.
 
@@ -32,7 +32,7 @@ Create a static `ai-catalog.json` manifest listing your agentic resources. Below
 }
 ```
 
-*   **`identifier`**: Naming must follow the domain-anchored URN standard: `urn:ai:<your-domain>:<agentic resource-name>`.
+*   **`identifier`**: Naming must follow the domain-anchored URN standard: `urn:ai:<your-domain>:<agent-name>`.
 *   **`representativeQueries`**: Provide **2–5 natural language queries** to enable high-fidelity semantic vector search.
 
 ---
