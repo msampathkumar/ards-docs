@@ -6,10 +6,11 @@ for a task** — and decide what to install. The
 ready-made setups for **Claude, ChatGPT, GitHub Copilot, Microsoft Copilot, and
 Gemini**.
 
-The connectors are **client-side only**. A discovery service such as
-**[Agent Finder](https://github.com/agentfinder)** exposes the search interface;
-the connector just points your chatbot at an endpoint you choose. Nothing is
-installed automatically.
+The connectors are **client-side only**. A discovery service — such as GitHub's
+**[Agent Finder](https://github.com/agentfinder)** or **[Hugging Face
+Discover](https://github.com/huggingface/hf-discover)** — exposes the search
+interface; the connector just points your chatbot at an endpoint you choose.
+Nothing is installed automatically.
 
 ## What it does
 
