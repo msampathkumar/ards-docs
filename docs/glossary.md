@@ -8,7 +8,7 @@ Any external capability an AI client can call on to perform a task: an agent, MC
 
 ### Agent Finder
 
-A *product*: one discovery service built on ARD — [github.com/agentfinder](https://github.com/agentfinder). It is not the protocol itself; many discovery services, named or not, can implement ARD.
+A *product*: one discovery service built on ARD — [github.com/agentfinder](https://github.com/agentfinder). It is not the specification itself; many discovery services, named or not, can implement ARD.
 
 ### AI Catalog
 
@@ -16,7 +16,7 @@ The base, artifact-agnostic manifest standard ARD builds on. A publisher hosts a
 
 ### AI client
 
-An orchestrator, agent, or harness — a chatbot, IDE assistant, or automation — that discovers agentic resources through ARD and invokes the ones it selects over their native protocols. Also just *client*.
+An orchestrator, agent, or harness — a chatbot, IDE assistant, or automation — that discovers agentic resources through ARD and invokes the ones it selects over their native mechanisms. Also just *client*.
 
 ### ARD (Agentic Resource Discovery)
 
@@ -44,7 +44,7 @@ How discovery services draw on each other. A search's `federation` parameter is 
 
 ### MCP, A2A, and Skills
 
-Examples of the execution protocols and resource types ARD wraps: Model Context Protocol servers, Agent-to-Agent agent cards, and Skills. ARD discovers them; each is invoked over its own protocol.
+Examples of the execution mechanisms and resource types ARD wraps: Model Context Protocol servers, Agent-to-Agent agent cards, and Skills. ARD discovers them; each is invoked over its own mechanism.
 
 ### Media type
 

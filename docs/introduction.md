@@ -10,7 +10,7 @@ The bottleneck is no longer invocation. It is **discovery**. A client cannot use
 
 This is the problem the **Agentic Resource Discovery Specification (ARD)** solves. ARD lets a client ask one question: *what agentic resource can help with this task?* The answer is a set of matching capabilities: what each one does, who provides it, where it lives, and how the client can reach it.
 
-ARD only handles discovery. The client invokes the agentic resource it selects through that agentic resource's own protocol — MCP, an API, an agent protocol, a workflow system, or something else. ARD sits *before* invocation; it helps the client decide which capability to use. *What* to search over, *when* to search, and *what to do* with the results returned are all choices left to the designer of the system.
+ARD only handles discovery. The client invokes the agentic resource it selects through that agentic resource's own mechanism — MCP, an API, an agent framework, a workflow system, or something else. ARD sits *before* invocation; it helps the client decide which capability to use. *What* to search over, *when* to search, and *what to do* with the results returned are all choices left to the designer of the system.
 
 ARD is not a product. Any number of [discovery services](glossary.md#discovery-service) can implement it — **GitHub's [Agent Finder](https://github.com/agentfinder)** and **Hugging Face's [Discover](https://github.com/huggingface/hf-discover)** are two such services. The point is that an agentic resource published once should be discoverable by many clients, and a client should be able to find useful agentic resources well beyond the small set it already knows about.
 

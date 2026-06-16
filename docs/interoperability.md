@@ -13,13 +13,13 @@ The ecosystem already has many **curated collections of agentic resources**: reg
 
 ARD inverts the relationship. Instead of publishing *into* each collection, a publisher describes a resource once on its own domain (`yourdomain.com/.well-known/ai-catalog.json`), and any discovery service can index it organically — no central gatekeeper, no per-collection re-registration. Discovery becomes a property of the open web, the way search engines crawl sites, rather than a list owned by one operator.
 
-These collections don't disappear in this model — they become **ARD discovery services**. A registry, plugin directory, or tool catalog can index ARD entries from across the web, apply its own curation and trust policy, and expose the result; clients choose which to query, and they compose. So "ARD vs. a registry" is the wrong axis: ARD is the protocol that lets *many* curated collections — public, vendor, and internal — index the same published resource without anyone having to choose just one.
+These collections don't disappear in this model — they become **ARD discovery services**. A registry, plugin directory, or tool catalog can index ARD entries from across the web, apply its own curation and trust policy, and expose the result; clients choose which to query, and they compose. So "ARD vs. a registry" is the wrong axis: ARD is the specification that lets *many* curated collections — public, vendor, and internal — index the same published resource without anyone having to choose just one.
 
 ---
 
 ## Is ARD a replacement for MCP or OpenAPI?
 
-**No.** ARD is a **discovery protocol (an envelope)**, not an execution protocol. It wraps existing execution standards (like MCP, A2A, and OpenAPI) using standard and proposed IANA media types so clients can find agentic resources dynamically. Once discovered, the client connects to and invokes the agentic resource using its native protocol (e.g., JSON-RPC for MCP).
+**No.** ARD is a **discovery protocol (an envelope)**, not an execution mechanism. It wraps existing execution standards (like MCP, A2A, and OpenAPI) using standard and proposed IANA media types so clients can find agentic resources dynamically. Once discovered, the client connects to and invokes the agentic resource using its native mechanism (e.g., JSON-RPC for MCP).
 
 ---
 
@@ -44,7 +44,7 @@ In short: built-in tool search selects among known tools; ARD is the layer that 
 
 ## What is the difference between ARD and Agent Finder?
 
-ARD is the **protocol**. **[Agent Finder](https://github.com/agentfinder)** is a product — one discovery service built on ARD, among the many the protocol makes possible. A publisher describes an agentic resource once; any number of discovery services, named or not, can then choose to index and serve it.
+ARD is the **specification**. **[Agent Finder](https://github.com/agentfinder)** is a product — one discovery service built on ARD, among the many the protocol makes possible. A publisher describes an agentic resource once; any number of discovery services, named or not, can then choose to index and serve it.
 
 ---
 

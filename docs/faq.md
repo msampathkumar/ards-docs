@@ -27,13 +27,13 @@ Traditional tool selection requires stuffing every available schema into the sys
 
 ## Where does trust come from in ARD?
 
-**From the curation of the registry, not from the protocol.** ARD does not make any agentic resource trustworthy — it gives publishers a way to *assert* verifiable identity and provenance, and clients a way to *verify* it. The actual trust decision lives in two places the protocol does not own: the **registry that curates what it indexes and serves**, and the **client that checks the signals before invoking**. ARD's job is to communicate trust, not to confer it.
+**From the curation of the registry, not from the protocol.** ARD does not make any agentic resource trustworthy — it gives publishers a way to *assert* verifiable identity and provenance, and clients a way to *verify* it. The actual trust decision lives in two places the specification does not own: the **registry that curates what it indexes and serves**, and the **client that checks the signals before invoking**. ARD's job is to communicate trust, not to confer it.
 
 ---
 
 ## What trust signals can ARD communicate?
 
-The protocol's role here is narrow and deliberate: it gives a publisher a **mechanism to assert verifiable claims**, and a registry or client a **standard way to check them**. ARD itself verifies nothing and vouches for no one. An entry can carry:
+The specification's role here is narrow and deliberate: it gives a publisher a **mechanism to assert verifiable claims**, and a registry or client a **standard way to check them**. ARD itself verifies nothing and vouches for no one. An entry can carry:
 
 - **Domain-anchored identity** — a mechanism to declare a publisher domain in the entry's URN (`urn:ai:acme.com:...`), so identity is rooted in DNS rather than a self-asserted label and can be checked by whoever consumes the entry.
 - **Verified publishers** — a mechanism for a publisher to *demonstrate* they are who they claim: a `trustManifest.identity` (e.g. `did:web`, SPIFFE) that a registry or client cryptographically verifies against the publisher's domain. The protocol carries the claim; the registry or client performs the verification.
