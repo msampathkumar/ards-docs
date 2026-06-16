@@ -10,6 +10,8 @@ You want this when your agent needs capabilities — MCP servers, A2A agents,
 Skills, APIs — that aren't wired in ahead of time, and you want that set to stay
 current without re-shipping the client.
 
+Already using a major chatbot? For Claude, ChatGPT, GitHub Copilot, Microsoft Copilot, and Gemini we provide ready-made connectors — see [Connect a chatbot](connect.md). You're welcome to build on or improve those. This guide is for when you have your own client and want to add ARD support directly.
+
 ## What a client does
 
 1. Hold a list of discovery-service endpoints it is allowed to query.
