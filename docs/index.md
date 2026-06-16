@@ -26,4 +26,4 @@ ARD is being developed by a working group with participants from Microsoft, Goog
 
 To understand the motivation and design, start with the [Introduction](introduction.md).
 
-![Contributors to the Agentic Resource Discovery (ARD) specification: Cisco, Databricks, GitHub, GoDaddy, Google, Hugging Face, Microsoft, Nvidia, Salesforce, SAP, ServiceNow, Snowflake](assets/logo-wall.png){ .logo-wall }
+![Contributors to the Agentic Resource Discovery (ARD) specification: Cisco, Databricks, GitHub, GoDaddy, Google, Hugging Face, Microsoft, Nvidia, Salesforce, ServiceNow, Snowflake](assets/logo-wall.png){ .logo-wall }
