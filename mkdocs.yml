@@ -94,7 +94,6 @@ nav:
     - How ARD works: how_ard_works.md
     - Interoperability: interoperability.md
     - Contributors: contributors.md
-    - Reference Implementations: ref_implementations.md
     - FAQ: faq.md
     - Glossary: glossary.md
   - Guides:
@@ -107,6 +106,7 @@ nav:
       - Gemini: connect/gemini.md
     - How to publish: how_to_publish.md
     - How to add ARD support to your agent: how_to_build_a_client.md
+    - Reference Implementations: ref_implementations.md
   - Specifications:
     - ARD Specification: spec.md
     - AI Catalog Standard: ai_catalog_spec.md
