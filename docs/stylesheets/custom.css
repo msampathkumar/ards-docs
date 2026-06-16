@@ -153,3 +153,12 @@ html[data-md-color-scheme="slate"] .upcoming-badge {
   margin: 0;
 }
 
+/* Contributor logo wall — responsive, centered, with breathing room above. */
+.logo-wall {
+  display: block;
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  margin: 2.5rem auto 0;
+}
+
