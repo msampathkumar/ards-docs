@@ -1,3 +1,4 @@
+<!-- DO NOT EDIT. Generated from ards-project/ard-spec spec/ard.md by scripts/sync-spec.py. -->
 # Agentic Resource Discovery Specification
 
 **Federated Discovery and Search for Agentic Resources**
