@@ -24,3 +24,15 @@ Navigate mode locates AI Catalogs from URLs and traverses federated registries.
 ### REST API
 
 Reach the same data over HTTP — the catalog at `https://huggingface.co/.well-known/ai-catalog.json`, or call search directly at `https://evalstate-hf-discover.hf.space/search`.
+
+## GitHub Agent Finder
+
+GitHub's Agent Finder is a discovery service for agentic resources — Skills, tools, and MCP servers — reachable over HTTP at `agentfinder.github.com`.
+
+### GitHub Copilot
+
+GitHub Copilot can search it directly: add Agent Finder as a remote MCP tool (or as custom instructions), then ask Copilot to find a capability for your task and it returns ranked matches you choose to install. See [Connect Microsoft Copilot](connect/copilot.md) for the full setup — it uses this same endpoint as its example.
+
+### HTTP API
+
+Call search directly at `http://agentfinder.github.com` (`POST /search`).
