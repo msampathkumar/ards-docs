@@ -42,12 +42,6 @@ In short: built-in tool search selects among known tools; ARD is the layer that 
 
 ---
 
-## What is the difference between ARD and Agent Finder?
-
-ARD is the **specification**. **[Agent Finder](https://github.com/agentfinder)** is a product — one discovery service built on ARD, among the many the protocol makes possible. A publisher describes an agentic resource once; any number of discovery services, named or not, can then choose to index and serve it.
-
----
-
 ## What about the ACP Agent Registry
 
 The list of ACP agents in [ACP's Agent Registry](https://agentclientprotocol.com/get-started/registry) is already structurally close to the AI Catalog specification. ACP registries can export their directory manifests as standard `ai-catalog.json` feeds, enabling instant web-scale discovery for editor-context agents — without those agents having to be re-registered anywhere.
