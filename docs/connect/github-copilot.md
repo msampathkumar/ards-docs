@@ -17,7 +17,7 @@ ways:
 `~/.copilot/skills/` (personal) or `.github/skills/<name>/` (project):
 
 ```
-cp -r connectors/skills/find-agentic-resources ~/.copilot/skills/
+cp -r connectors/skills/agentfinder ~/.copilot/skills/
 ```
 
 Copilot also reads `~/.claude/skills/` and `.claude/skills/`, so a skill you
@@ -29,7 +29,7 @@ skills straight from a GitHub repo.
 **Create it in the editor.** In Copilot Chat, open **Configure Chat** (the gear
 icon) → the **Skills** tab → **New Skill (User)** / **New Skill (Workspace)** —
 this scaffolds an *empty* `SKILL.md` for you to paste the connectors repo's
-[`SKILL.md`](https://github.com/ards-project/connectors/blob/main/skills/find-agentic-resources/SKILL.md)
+[`SKILL.md`](https://github.com/ards-project/connectors/blob/main/skills/agentfinder/SKILL.md)
 into. (This editor UI is only in recent VS Code / Visual Studio 2026 builds.)
 
 ### How to invoke it

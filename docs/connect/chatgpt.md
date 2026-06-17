@@ -15,7 +15,7 @@ lives in your workspace, not in a file — you add it through the UI.
 editor, then create the skill from the connectors repo
 ([`skills/chatgpt/`](https://github.com/ards-project/connectors/tree/main/skills/chatgpt)):
 
-- **Name:** `find-agentic-resources`
+- **Name:** `agentfinder`
 - **Instructions:** paste the body of that file (ask which Agent Finder to query,
   present the ranked results, and never auto-install).
 
@@ -28,7 +28,7 @@ connector) or a custom **Action** whose OpenAPI calls
 ChatGPT can use the skill automatically when it's relevant, or you can invoke it
 explicitly by @-mentioning it:
 
-> @find-agentic-resources find me a tool for converting CSVs to charts
+> @agentfinder find me a tool for converting CSVs to charts
 
 Either way it asks which Agent Finder to search, runs the query via the
 connector/Action, and presents the matches for you to pick from.

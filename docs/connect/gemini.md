@@ -11,7 +11,7 @@ arbitrary HTTP, so a Gem there can only describe the behavior, not execute it.
 new Gem and paste the instructions from the connectors repo
 ([`skills/gemini/`](https://github.com/ards-project/connectors/tree/main/skills/gemini)):
 
-- **Name:** `find-agentic-resources`
+- **Name:** `agentfinder`
 - **Instructions:** copy the body of that file — it tells Gemini to ask which
   Agent Finder to query, present the ranked results, and never auto-install.
 

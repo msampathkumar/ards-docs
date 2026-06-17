@@ -15,14 +15,14 @@ marketplace, so it's two commands:
 
 ```
 /plugin marketplace add ards-project/connectors
-/plugin install find-agentic-resources@ard-connectors
+/plugin install agentfinder@ard-connectors
 ```
 
 **Install (manual).** Copy the skill folder from the connectors repo into your
 skills directory — `~/.claude/skills/` (personal) or `.claude/skills/` (project):
 
 ```
-cp -r connectors/skills/find-agentic-resources ~/.claude/skills/
+cp -r connectors/skills/agentfinder ~/.claude/skills/
 ```
 
 ### How to invoke it
