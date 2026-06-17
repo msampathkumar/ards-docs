@@ -29,8 +29,8 @@ hf discover navigate <web-url> "Research biomedical datasets"
 
 Query the Hugging Face catalog service directly via:
 
-  - The REST API at: `https://evalstate-hf-discover.hf.space/search`
-  - MCP at: `https://evalstate-hf-discover.hf.space/mcp`
+  - The REST API at: `https://huggingface-hf-discover.hf.space/search`
+  - MCP at: `https://huggingface-hf-discover.hf.space/mcp`
 
 ## GitHub Agent Finder
 
