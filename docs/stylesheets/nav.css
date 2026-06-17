@@ -10,15 +10,19 @@
 @media screen and (min-width:37.5em){
 /* keep pages with `hide: navigation` actually hidden (mobile rule force-shows it) */
 .md-sidebar--primary[hidden]{display:none}
-/* revert mobile fixed slide-in drawer -> desktop sticky in-flow sidebar, with a panel background */
-.md-sidebar--primary:not([hidden]){position:sticky;top:2.4rem;left:auto;width:12.1rem;height:auto;padding:1.2rem .6rem;transform:none;background-color:var(--ards-nav-bg);box-shadow:none;z-index:1;border-radius:8px}
-.md-sidebar--primary .md-sidebar__scrollwrap{position:static;overflow:visible;inset:auto;margin:0;scroll-snap-type:none}
+/* revert mobile fixed slide-in drawer -> desktop sticky in-flow sidebar */
+.md-sidebar--primary:not([hidden]){position:sticky;top:2.4rem;left:auto;width:12.1rem;height:auto;padding:0;transform:none;background-color:transparent;box-shadow:none;z-index:1}
+/* panel background on inner wrapper so it grows with full nav content */
+.md-sidebar--primary .md-sidebar__inner{background-color:var(--ards-nav-bg);border-radius:8px;padding:1.2rem .6rem}
+/* beat Material's height:100% (mobile drawer) and height:0 (desktop shell) */
+.md-sidebar.md-sidebar--primary:not([hidden]){height:auto!important;max-height:none!important;min-height:fit-content}
+.md-sidebar--primary .md-sidebar__scrollwrap{position:static;overflow:visible;inset:auto;margin:0;scroll-snap-type:none;height:auto!important;max-height:none!important}
+.md-sidebar--primary .md-sidebar__inner{height:auto!important;max-height:none!important}
 /* revert mobile absolute overlay nav -> in-flow list */
 .md-nav--primary,.md-nav--primary .md-nav{position:static;height:auto;display:block}
 /* make the whole panel interior transparent so the grey shows through everywhere —
    scoped under .md-sidebar--primary to outrank Material's mobile background rules */
 .md-sidebar--primary .md-sidebar__scrollwrap,
-.md-sidebar--primary .md-sidebar__inner,
 .md-sidebar--primary .md-nav--primary,
 .md-sidebar--primary .md-nav--primary .md-nav,
 .md-sidebar--primary .md-nav--primary .md-nav__title~.md-nav__list{background-color:transparent;box-shadow:none}
