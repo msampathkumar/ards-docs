@@ -87,9 +87,11 @@ html[data-md-color-scheme="slate"] .md-typeset pre {
   margin-top: 1.5rem !important;
 }
 
-.md-footer {
-  border-top: 1px solid var(--md-default-fg-color--lightest) !important;
-  background-color: var(--md-default-bg-color) !important;
+/* prev/next nav (navigation.footer) is disabled, and the footer carries no
+   copyright/generator/social, so hide the otherwise-empty meta bar — it was
+   rendering white-on-white "Previous / Home" links at the bottom of every page. */
+.md-footer-meta {
+  display: none !important;
 }
 
 /* Upcoming Cards Grid Layout */
@@ -151,5 +153,14 @@ html[data-md-color-scheme="slate"] .upcoming-badge {
   line-height: 1.5;
   color: var(--md-default-fg-color--light) !important;
   margin: 0;
+}
+
+/* Contributor logo wall — responsive, centered, with breathing room above. */
+.logo-wall {
+  display: block;
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  margin: 2.5rem auto 0;
 }
 

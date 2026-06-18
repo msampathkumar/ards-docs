@@ -10,15 +10,19 @@
 @media screen and (min-width:37.5em){
 /* keep pages with `hide: navigation` actually hidden (mobile rule force-shows it) */
 .md-sidebar--primary[hidden]{display:none}
-/* revert mobile fixed slide-in drawer -> desktop sticky in-flow sidebar, with a panel background */
-.md-sidebar--primary:not([hidden]){position:sticky;top:2.4rem;left:auto;width:12.1rem;height:auto;padding:1.2rem .6rem;transform:none;background-color:var(--ards-nav-bg);box-shadow:none;z-index:1;border-radius:8px}
-.md-sidebar--primary .md-sidebar__scrollwrap{position:static;overflow:visible;inset:auto;margin:0;scroll-snap-type:none}
+/* revert mobile fixed slide-in drawer -> desktop sticky in-flow sidebar */
+.md-sidebar--primary:not([hidden]){position:sticky;top:2.4rem;left:auto;width:12.1rem;height:auto;padding:0;transform:none;background-color:transparent;box-shadow:none;z-index:1}
+/* panel background on inner wrapper so it grows with full nav content */
+.md-sidebar--primary .md-sidebar__inner{background-color:var(--ards-nav-bg);border-radius:8px;padding:1.2rem .6rem}
+/* beat Material's height:100% (mobile drawer) and height:0 (desktop shell) */
+.md-sidebar.md-sidebar--primary:not([hidden]){height:auto!important;max-height:none!important;min-height:fit-content}
+.md-sidebar--primary .md-sidebar__scrollwrap{position:static;overflow:visible;inset:auto;margin:0;scroll-snap-type:none;height:auto!important;max-height:none!important}
+.md-sidebar--primary .md-sidebar__inner{height:auto!important;max-height:none!important}
 /* revert mobile absolute overlay nav -> in-flow list */
 .md-nav--primary,.md-nav--primary .md-nav{position:static;height:auto;display:block}
 /* make the whole panel interior transparent so the grey shows through everywhere —
    scoped under .md-sidebar--primary to outrank Material's mobile background rules */
 .md-sidebar--primary .md-sidebar__scrollwrap,
-.md-sidebar--primary .md-sidebar__inner,
 .md-sidebar--primary .md-nav--primary,
 .md-sidebar--primary .md-nav--primary .md-nav,
 .md-sidebar--primary .md-nav--primary .md-nav__title~.md-nav__list{background-color:transparent;box-shadow:none}
@@ -49,4 +53,17 @@
 .md-nav--primary .md-nav__item--nested:not(.md-nav__item--section)>.md-nav__toggle:not(:checked)~.md-nav{
   grid-template-rows:minmax(0,0fr);opacity:0;visibility:collapse;
 }
+
+/* Below Material's 60em breakpoint, the current page's table of contents is
+   *integrated* into the primary nav: the active item grows a toggle <label>
+   with a hamburger icon plus a nested .md-nav--secondary. In our persistent
+   sidebar that leaks as a stray hamburger next to the active page and a large
+   vertical gap. Suppress the integrated TOC and its toggle here (the TOC still
+   shows as the right-hand sidebar once there's room for it). */
+/* Keep the active page's label, but drop the integrated-TOC hamburger icon on it. */
+.md-sidebar--primary .md-nav__item--active>.md-nav__link .md-nav__icon{display:none}
+/* !important: outranks the re-emitted `.md-nav--integrated ... .md-nav--secondary`
+   desktop rule that would otherwise keep the integrated TOC (and its gap) visible.
+   Scoped to the primary sidebar, so the right-hand TOC sidebar is unaffected. */
+.md-sidebar--primary .md-nav--secondary{display:none!important}
 }
